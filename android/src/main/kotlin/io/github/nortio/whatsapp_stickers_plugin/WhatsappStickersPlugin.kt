@@ -6,6 +6,7 @@ import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import androidx.annotation.NonNull
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
@@ -158,6 +159,7 @@ class WhatsappStickersPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, P
         if (data != null) {
           val validationError = data.getStringExtra("validation_error")
           if (validationError != null) {
+            Log.e("whatsapp_intent", validationError)
             this.result?.error("error", validationError, "")
           } else {
             this.result?.error("cancelled", "cancelled", "")
